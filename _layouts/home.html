@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Rockers Index</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Forums</a>
+                <a href="#">Movies</a>
+                <a href="#">Request Section</a>
+            </div>
+            <div class="nav-auth">
+                <input type="text" placeholder="Search..." class="search-bar">
+                <button>Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header-banner">
+        <img src="image_afb020.jpg" alt="Website Banner" class="banner-img">
+    </header>
+
+    <main class="content-container">
+        <div class="announcement">
+            <p>Wishing all our family a very Happy New Year!</p>
+        </div>
+
+        <div class="movie-list">
+            <h2>Latest Uploads</h2>
+            
+            {% for movie in site.posts %}
+            <div class="movie-item">
+                <span class="movie-title">
+                    <b style="color: #ff7b72;">[{{ movie.quality }}]</b> {{ movie.title }} ({{ movie.year }}) 
+                    <i style="color: #3fb950;">- {{ movie.language }}</i>
+                </span>
+                <div class="links">
+                    {% if movie.link_1080p %}<a href="{{ movie.link_1080p }}" class="link-btn">1080p</a>{% endif %}
+                    {% if movie.link_720p %}<a href="{{ movie.link_720p }}" class="link-btn">720p</a>{% endif %}
+                    {% if movie.link_480p %}<a href="{{ movie.link_480p }}" class="link-btn">480p</a>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+    </main>
+
+</body>
+</html>
